@@ -47,10 +47,9 @@ body {
   width: 100%;
   padding: 20px;
   height: 100%;
-
 }
 
-.email-section, .password-section, .button-section, .register-section, .name-section, .login-section {
+.form-group {
   height: 25%;
   display: flex;
   flex-direction: column;

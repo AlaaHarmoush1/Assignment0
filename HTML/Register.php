@@ -1,3 +1,22 @@
+<?php
+
+session_start();
+
+if (isset($_SESSION['error'])) {
+  echo "<script>alert('" . $_SESSION['error'] . "');</script>";
+  unset($_SESSION['error']);
+}
+
+
+
+if ($_SESSION['isloggedin']) {
+    header("Location: ./Home.php");
+    exit();
+}
+
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -8,7 +27,7 @@
 </head>
 <body>
 
-    <div class="image-section"></div>
+    
 
     <div class="form-section">
         <div class="container">
@@ -18,26 +37,36 @@
             </div>
             
             <form class="form" action="../php/Register.php" method="POST">
-                <div class="name-section">
+                <div class="form-group">
                     <label for="name">Name</label>
-                    <input type="Name" name="Name" id="Name" placeholder="Enter your Name" required>
+                    <input type="Name" name="name" id="Name" placeholder="Enter your Name" required>
                 </div>
-                <div class="email-section">
+                <div class="form-group">
+                    <label for="Phone">Phone Number</label>
+                    <input type="text" name="Number" id="Number" placeholder="Enter your Number" required>
+                </div>
+                <div class="form-group">
+                    <label for="Address">Address</label>
+                    <input type="text" name="Address" id="Address" placeholder="Enter your Address" required>
+                </div>
+                <div class="form-group">
                     <label for="email">Email</label>
                     <input type="email" name="email" id="email" placeholder="Enter your email" required>
                 </div>
-                <div class="password-section">
+                <div class="form-group">
                     <label for="password">Password</label>
                     <input type="password" name="password" id="password" placeholder="Enter your password" required>
                 </div>
-                <div class="button-section">
+                <div class="button-section form-group">
                     <button type="submit" class="register-button">Register</button>
                 </div>
-                <div class="login-section">
-                    <p>Already have an account? <a href="Login.html">Login</a></p>
+                <div class="login-section form-group">
+                    <p>Already have an account? <a href="Login.php">Login</a></p>
                 </div>
             </form>
         </div>
     </div>
+
+    <div class="image-section"></div>
 </body>
 </html>

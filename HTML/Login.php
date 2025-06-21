@@ -1,3 +1,20 @@
+<?php
+
+session_start();
+
+$_SESSION['isloggedin'] = false;
+
+if (isset($_SESSION['error'])) {
+  echo "<script>alert('" . $_SESSION['error'] . "');</script>";
+  unset($_SESSION['error']);
+}
+
+if ($_SESSION['isloggedin']) {
+    header("Location: ./Home.php");
+    exit();
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -15,7 +32,7 @@
           <h1>Welcome Back</h1>
           <p>Please login to proceed</p>
         </div>
-        <form class="form" action="../php/login.php" method="POST">
+        <form class="form" action="../php/Login.php" method="POST">
           <div class="email-section">
             <label for="email">Email</label>
             <input type="email" name="email" id="email" placeholder="Enter your email" required />
@@ -28,7 +45,7 @@
             <button type="submit" class="loginButton">Login</button>
           </div>
           <div class="register-section">
-            <p>Don't have an account? <a href="Register.html">Register</a></p>
+            <p>Don't have an account? <a href="Register.php">Register</a></p>
           </div>
         </form>
       </div>

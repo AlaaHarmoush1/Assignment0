@@ -1,0 +1,26 @@
+body {
+    background-color: #f4f4f4;
+}
+
+
+.Greetings {
+    text-align: center;
+    margin-top: 50px;
+}
+
+
+.create-balance-button {
+    padding: 10px 20px; 
+    background-color: #011099; 
+    color: white; 
+    border: none; 
+    border-radius: 5px; 
+    cursor: pointer;
+}
+
+.balance-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 20px;
+}
