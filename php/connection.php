@@ -9,6 +9,5 @@ $conc = new mysqli($ServerName, $username, $password, $database);
 
 if ($conc->connect_error) {
     die("Connection failed: " . $conc->connect_error);
-}else {
-    echo "Connected to database successfully";
+    header("Location: ../php/DatabaseError.html");
 }
