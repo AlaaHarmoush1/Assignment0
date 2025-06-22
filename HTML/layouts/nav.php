@@ -44,7 +44,7 @@ img {
       <li><a href="./Home.php">Home</a></li>
       <li><a href="./Profile.php">Profile</a></li>
       <li><a href="./Deposite.php">Deposite</a></li>
-      <li><a href="./Withdorw.php">Withdorw</a></li>
+      <li><a href="./Withdrow.php">Withdrow</a></li>
       <li><a href="./Transactons.php">Transacton History</a></li>
       <li><a href="../php/Logout.php">Logout</a></li>
     </ul>

@@ -9,6 +9,11 @@ if ($_SESSION['haveAccount'] == false) {
     
 }
 
+if(isset($_SESSION['error'])) {
+    echo "<script>alert('" . $_SESSION['error'] . "');</script>";
+    unset($_SESSION['error']);
+}
+
 
 
 include '../php/connection.php';
@@ -32,7 +37,13 @@ include './layouts/nav.php';
         <form action="../php/Deposit.php" method="POST">
             <label for="amount">Enter Amount to Deposit:</label>
             <input type="number" id="amount" name="amount" required>
-            <button type="submit">Deposit</button>
+            <button type="submit" id="Deposite-button" >Deposit</button>
         </form>
     </div>
+
+
+    <script src="../JS/transactions.js"></script>
+</body>
+</html>
+
 
