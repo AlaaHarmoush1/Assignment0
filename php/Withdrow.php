@@ -1,25 +1,12 @@
 <?php
 
-session_start();
 include 'connection.php';
+include './HelperFunctions/getUserId.php';
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $amount = (float)$_POST['amount'];
-    $name = $_SESSION['name'];
 
-    $user_sql = "SELECT ID FROM users WHERE Name = '$name'";
-    $user_result = mysqli_query($conc, $user_sql);
-    if (!$user_result || mysqli_num_rows($user_result) === 0) {
-        $_SESSION['error'] = "User not found.";
-        header("Location: ../HTML/Login.php");
-        exit();
-    }
-
-    $user = mysqli_fetch_assoc($user_result);
-    $userId = $user['ID'];
-
-
-    $balance_sql = "SELECT balance FROM balance WHERE user_id = '$userId'";
+    $balance_sql = "SELECT balance FROM balance WHERE user_id = '$user_id'";
     $balance_result = mysqli_query($conc, $balance_sql);
     if (!$balance_result || mysqli_num_rows($balance_result) === 0) {
         $_SESSION['error'] = "Balance record not found.";
@@ -34,15 +21,15 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
     if ($amount > $current_balance) {
         $_SESSION['error'] = "Insufficient balance.";
-        header("Location: ../HTML/Withdorw.php");
+        header("Location: ../HTML/Withdrow.php");
         exit();
     }
 
-    $sql = "UPDATE balance SET balance = balance - $amount WHERE user_id = '$userId'";
+    $sql = "UPDATE balance SET balance = balance - $amount WHERE user_id = '$user_id'";
     $result = mysqli_query($conc, $sql);
 
     if ($result) {
-        $transaction_sql = "INSERT INTO transactions (user_id, type, amount) VALUES ('$userId', 'withdraw', -$amount)";
+        $transaction_sql = "INSERT INTO transactions (user_id, type, amount) VALUES ('$user_id', 'withdraw', -$amount)";
         mysqli_query($conc, $transaction_sql);
         header("Location: ../HTML/Home.php");
         exit();

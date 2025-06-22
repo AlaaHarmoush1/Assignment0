@@ -1,0 +1,39 @@
+h1 {
+    text-align: center;
+    color: #011099;
+}
+
+table {
+    width: 80%;
+    margin: 30px auto;
+    border-collapse: collapse;
+}
+th, td {
+    padding: 12px;
+    text-align: center;
+    border: 1px solid #ccc;
+}
+th {
+    background-color: #011099;
+    color: white;
+}
+.positive {
+    color: green;
+}
+.negative {
+    color: red;
+}
+.download-button {
+    display: block;
+    width: 200px;
+    margin: 20px auto;
+    text-align: center;
+    padding: 10px;
+    background-color: #011099;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+}
+.download-btn:hover {
+    background-color: #0320d1;
+}

@@ -1,24 +1,11 @@
 <?php
-session_start();
-include_once '../php/connection.php';
+ini_set('display_errors', 0);
 
-if (!$_SESSION['isloggedin']) {
-    header("Location: ./Login.php");
-    exit();
-}
+include '../php/connection.php';
+include '../php/HelperFunctions/getUserId.php';
+include '../php/HelperFunctions/handleError.php';
 
-if (isset($_SESSION['error'])) {
-  echo "<script>alert('" . $_SESSION['error'] . "');</script>";
-  unset($_SESSION['error']);
-}
 
-$name = $_SESSION['name'];
-
-$user_sql = "SELECT * FROM users WHERE Name = '$name'";
-$user_result = mysqli_query($conc, $user_sql);
-$user = $user_result->fetch_assoc();
-$user_id = $user['ID'];
-$_SESSION['user_id'] = $user_id;
 
 $balance_sql = "SELECT * FROM balance WHERE user_id = '$user_id'";
 $balance_result = mysqli_query($conc, $balance_sql);

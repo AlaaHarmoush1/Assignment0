@@ -2,22 +2,14 @@
 
 session_start();
 
-
 if ($_SESSION['haveAccount'] == false) {
     header("Location: ./Home.php");
     $_SESSION['error'] = "Create a balance account first.";
-    
 }
-
-if(isset($_SESSION['error'])) {
-    echo "<script>alert('" . $_SESSION['error'] . "');</script>";
-    unset($_SESSION['error']);
-}
-
-
 
 include '../php/connection.php';
 include './layouts/nav.php';
+include '../php/HelperFunctions/handleError.php';
 
 ?>
 

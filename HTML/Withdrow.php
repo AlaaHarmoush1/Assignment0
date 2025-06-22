@@ -1,8 +1,8 @@
 <?php
 include '../php/connection.php';
-session_start();
-
 include './layouts/nav.php';
+include '../php/HelperFunctions/handleError.php';
+
 
 ?>
 
